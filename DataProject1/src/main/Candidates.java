@@ -7,8 +7,8 @@ public class Candidates {
 	private String name;
 	private int id;
 	private Set<Ballot> candy = new DynamicSet<Ballot>(10);
-	
-	
+
+
 	public String getName() {
 		return name;
 	}

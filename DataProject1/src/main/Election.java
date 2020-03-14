@@ -28,15 +28,15 @@ public class Election {
 		system.allBallots = system.getBallots(new File("ballots.csv")); //Receives the ballots from the CSV into the set allBallots
 
 		for (Ballot currentBallot : system.allBallots) {
-			system.sift(currentBallot.getCandidateByRank(1)).getCandy().add(currentBallot); //TODO
+			system.sift(currentBallot.getCandidateByRank(1)).getCandy().add(currentBallot); //Adds candidates with rank 1
 		}	
 
 		int totalBallots = system.allBallots.size() + system.blanks + system.invalids; //Sum of all ballots
+
 		writer.write("Number of ballots: " + totalBallots + "\n");
 		writer.write("Number of blank ballots: " + system.blanks + "\n");
 		writer.write("Number of invalid ballots: " +system.invalids + "\n");
 		system.processing(writer); //Writes results into results.txt
-
 		writer.close();
 	}
 
@@ -167,7 +167,7 @@ public class Election {
 		Scanner scanner = new Scanner(file);
 
 
-		while (scanner.hasNextLine()) { //TODO
+		while (scanner.hasNextLine()) { 
 			dataScanner = new Scanner(scanner.nextLine());
 			dataScanner.useDelimiter(",");
 			Candidates newCand = new Candidates();
@@ -199,7 +199,7 @@ public class Election {
 					invalidate(ballot); //Verifies the validity and adds to the invalids count if not valid
 					ballots.add(ballot); //Adds verified ballot
 					sift(ballot.getCandidateByRank(1)).getCandy().add(ballot); //Finds candidate with rank 1 in the ballot and adds them
-					}
+				}
 			}else {
 				blanks++;
 			}

@@ -30,16 +30,16 @@ public class Ballot {
 	public int getBallotNum() {// returns the ballot number
 		return this.BallotNum;		 
 	}
-	
+
 	public int getFirstChoice() {
 		return getCandidateByRank(1);
 	}
 
 	public int getRankByCandidate(int candidateId) { // rank for that candidate
 		for (Vote dang : Votes) {
-		if(dang.getCandidateID()==candidateId) {
-			
-			return dang.getVoterPref();
+			if(dang.getCandidateID()==candidateId) {
+
+				return dang.getVoterPref();
 			}
 		}
 		return -1;
@@ -48,14 +48,14 @@ public class Ballot {
 	public int getCandidateByRank(int rank) {// candidate with that rank
 		for (Vote dang : Votes) {
 			if(dang.getVoterPref()==rank) {
-				
+
 				return dang.getCandidateID();
-				}
 			}
-			return -1;
+		}
+		return -1;
 
 	}
-	
+
 	public boolean eliminate(int candidateId) {// eliminates a candidate
 		Vote die = null;
 		boolean eliminated = false;
@@ -64,11 +64,11 @@ public class Ballot {
 				die = eliminee;
 				Votes.remove(eliminee);
 				eliminated = true;
-				}
+			}
 		}
 		for (Vote outted : Votes) {
 			if(outted.getVoterPref()>die.getVoterPref()) {
-				
+
 				outted.setVoterPref(outted.getVoterPref()-1);
 			}
 		}
